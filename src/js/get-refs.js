@@ -1,8 +1,8 @@
 export default function getRefs() {
   return {
-    searchForm: document.querySelector('.search-form'),
-    input: document.querySelector('input'),
+    form: document.querySelector('#search-form'),
+    loadMore: document.querySelector('[data-action="load-more"]'),
     gallery: document.querySelector('.gallery'),
-    photoCard: document.querySelector('.photo-card'),
+    loader: document.querySelector('.loader-js'),
   };
 }
