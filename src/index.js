@@ -29,13 +29,14 @@ async function onSearchForm(event) {
             });
         };
 
-        apiService.resertPage();
+        apiService.resetPage();
         refs.loader.classList.remove('is-hidden');
         const images = await apiService.fetchImages();
 
         checkImagesAvailability(images);
         clearImagesInGallery(images);
         insertImagesInGallery(images);
+        scrollAfterLoad();
 
         refs.loader.classList.add('is-hidden');
     } catch {
@@ -52,6 +53,7 @@ async function onLoadMore() {
     const images = await apiService.fetchImages();
     insertImagesInGallery(images);
     refs.loader.classList.add('is-hidden');
+    scrollAfterLoad();
 };
 
 function insertImagesInGallery(images) {
@@ -71,3 +73,10 @@ function checkImagesAvailability(array) {
         });
     }
 };
+
+function scrollAfterLoad () {
+    refs.loadMore.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end',
+    });
+}
